@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import GlitchTextEffect from "@site/src/components/HomepageFeatures/glitchTextEffect";
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -14,6 +15,7 @@ import noise from "@site/static/img/noise.png";
 console.log(logo);
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const {glitchTagline,glitchWord, glitchIntensity, glitchColors} = siteConfig.customFields;
 
 
   useEffect(() => {
@@ -115,7 +117,22 @@ function HomepageHeader() {
         
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        {/* <p className="hero__subtitle">{glitchTagline}</p> */}
+        <p className="hero__subtitle" style={{ width: '100%' }}>
+          <GlitchTextEffect 
+              text={glitchTagline}
+              glitchWord={glitchWord}
+              width={1000} // Increased width
+              height={100} // Increased height
+              fontSize={32} // Increased font size
+              fontFamily="Arial, sans-serif" // Web-safe font
+              baseColor="white" // Ensuring contrast with black background
+              glitchColors={glitchColors}
+              glitchIntensity={glitchIntensity} // Reduced intensity
+              sliceCount={10} // Reduced slice count
+              style={{zIndex: 10}} // Ensuring it's above other elements
+            />
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"

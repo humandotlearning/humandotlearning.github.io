@@ -60,6 +60,14 @@ const config = {
     ],
   ],
 
+  customFields: {
+    glitchTagline: 'Building a beautiful future supported with AI',
+    glitchWord: 'AI',
+    glitchIntensity: 8,
+    glitchColors: ['#ff00ff', '#00ffff', '#ffff00'],
+  },
+
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
