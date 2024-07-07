@@ -117,8 +117,8 @@ function HomepageHeader() {
         
           {siteConfig.title}
         </Heading>
-        {/* <p className="hero__subtitle">{glitchTagline}</p> */}
-        <p className="hero__subtitle" style={{ width: '100%' }}>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        {/* <p className="hero__subtitle" style={{ width: '100%' }}>
           <GlitchTextEffect 
               text={glitchTagline}
               glitchWord={glitchWord}
@@ -132,12 +132,12 @@ function HomepageHeader() {
               sliceCount={10} // Reduced slice count
               style={{zIndex: 10}} // Ensuring it's above other elements
             />
-        </p>
+        </p> */}
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            About Me 
           </Link>
         </div>
       </div>
