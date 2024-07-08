@@ -88,7 +88,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/humandotlearning',
             label: 'GitHub',
             position: 'right',
           },
@@ -132,7 +132,11 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/humandotlearning',
+              },
+              {
+                href: 'https://drive.google.com/file/d/12_Q1ttgEQCrrDUZC7xGs3TNrq8_ZvGNT/view?usp=sharing',
+                label: 'Resume',
               },
             ],
           },
