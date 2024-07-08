@@ -1,6 +1,6 @@
 # About Me
 
-I am a Nithin Varghese a passionate Deep learning/Computer Vision Engineer with a strong belief in the transformative power of AI. My mission is to harness the potential of artificial intelligence to create a more beautiful future for all.
+I am Nithin Varghese a passionate Deep learning/Computer Vision Engineer with a strong belief in the transformative power of AI. My mission is to harness the potential of artificial intelligence to create a more beautiful future for all.
 
 ## Professional Experience
 
