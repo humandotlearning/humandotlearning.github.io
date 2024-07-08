@@ -12,7 +12,25 @@ import styles from './index.module.css';
 import logo from "@site/static/img/profile-without-bkg.png";
 import noise from "@site/static/img/noise.png";
 
+import { Twitter, Linkedin, Github } from 'lucide-react';
+
+
 console.log(logo);
+
+function SocialIcon({ Icon, href, label }) {
+  return (
+    <a
+      className={clsx('button button--primary', styles.social)}
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
+      aria-label={label}
+    >
+      <Icon size={24} />
+    </a>
+  );
+}
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const {glitchTagline,glitchWord, glitchIntensity, glitchColors} = siteConfig.customFields;
@@ -118,6 +136,7 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        
         {/* <p className="hero__subtitle" style={{ width: '100%' }}>
           <GlitchTextEffect 
               text={glitchTagline}
@@ -135,11 +154,30 @@ function HomepageHeader() {
         </p> */}
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--secondarycss button--lg"
             to="/docs/intro">
-            About Me 
+            About Me  &#8594;
           </Link>
         </div>
+        <br></br>
+        <div className={styles.socialIcons}>
+          <SocialIcon 
+            Icon={Twitter} 
+            href="https://twitter.com/call_me_Nithin" 
+            label="Twitter Profile"
+          />
+          <SocialIcon 
+            Icon={Linkedin} 
+            href="https://www.linkedin.com/in/nithin1357/" 
+            label="LinkedIn Profile"
+          />
+          <SocialIcon 
+            Icon={Github} 
+            href="https://github.com/humandotlearning" 
+            label="GitHub Profile"
+          />
+        </div>
+
       </div>
     </header>
   );
