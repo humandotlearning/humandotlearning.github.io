@@ -14,3 +14,7 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+guitar :
+  label: guitar
+  permalink: /guitar
+  description: guitar scale visualiser
