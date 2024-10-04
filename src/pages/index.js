@@ -9,7 +9,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import logo from "@site/static/img/profile-without-bkg.png";
+import logo from "@site/static/img/profile_pixelart-removebg-preview.png";
 import noise from "@site/static/img/noise.png";
 
 import { Twitter, Linkedin, Github } from 'lucide-react';
