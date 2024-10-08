@@ -14,7 +14,29 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
-guitar :
-  label: guitar
+
+# Guitar and music theory tags
+guitar:
+  label: Guitar
   permalink: /guitar
-  description: guitar scale visualiser
+  description: Guitar-related topics and techniques
+scales:
+  label: Scales
+  permalink: /scales
+  description: Musical scales and their applications
+modes:
+  label: Modes
+  permalink: /modes
+  description: Musical modes and their usage in composition and improvisation
+music_theory:
+  label: Music theory
+  permalink: /music-theory
+  description: Concepts and principles of music theory
+guitar_theory:
+  label: Guitar theory
+  permalink: /guitar-theory
+  description: Theoretical concepts specific to guitar playing
+guitar_visualizer:
+  label: Guitar Visualizer
+  permalink: /guitar-visualizer
+  description: Tools and techniques for visualizing guitar concepts
