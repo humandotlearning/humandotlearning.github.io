@@ -1,23 +1,369 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+.homeSurface {
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(193, 255, 79, 0.07), transparent 32rem),
+    radial-gradient(circle at 88% 8%, rgba(67, 239, 255, 0.06), transparent 28rem),
+    var(--signal-bg);
+  color: var(--signal-ink);
+}
+
+.heroBanner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: 5.5rem max(1.5rem, calc((100vw - 1180px) / 2)) 3rem;
+}
+
+.heroBanner::before,
+.heroBanner::after,
+.heroAtmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+}
+
+.heroBanner::before {
+  background:
+    linear-gradient(rgba(237, 246, 222, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 246, 222, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 100%);
+}
+
+.heroBanner::after {
+  opacity: 0.09;
+  background-image:
+    url('/img/noise.png');
+  background-size: 340px 340px;
+  mix-blend-mode: soft-light;
+}
+
+.heroAtmosphere {
+  background:
+    linear-gradient(135deg, rgba(193, 255, 79, 0.055), transparent 26rem),
+    radial-gradient(circle at 68% 48%, rgba(67, 239, 255, 0.07), transparent 24rem);
+}
+
+.heroShell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(20rem, 0.78fr);
+  gap: 4rem;
+  align-items: center;
+}
+
+.heroCopy {
+  position: relative;
+  max-width: 47rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  margin: 0 0 1rem;
+  color: var(--signal-cyan);
+  font-family: var(--signal-font-mono);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.eyebrow::before {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--signal-lime);
+  box-shadow: none;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  content: '';
+}
+
+.heroTitle {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--signal-ink);
+  font-family: var(--signal-font-display);
+  font-size: 5.5rem;
+  line-height: 0.88;
+  letter-spacing: 0;
+}
+
+.heroLead {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+  color: var(--signal-muted);
+  font-size: 1.28rem;
+  line-height: 1.55;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.heroActions :global(.button) {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.ghostAction {
+  background: rgba(13, 19, 16, 0.74) !important;
+  color: var(--signal-ink) !important;
+  border-color: rgba(237, 246, 222, 0.22) !important;
+}
+
+.ghostAction:hover {
+  color: var(--signal-lime) !important;
+  border-color: rgba(193, 255, 79, 0.55) !important;
+}
+
+.socialIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: 1.35rem;
+}
+
+.social {
+  display: inline-grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  color: var(--signal-ink);
+  background: rgba(12, 20, 15, 0.76);
+  border: 1px solid rgba(237, 246, 222, 0.18);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(67, 239, 255, 0.04);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.social:hover {
+  color: var(--signal-lime);
+  background: rgba(193, 255, 79, 0.06);
+  border-color: rgba(193, 255, 79, 0.32);
+  transform: translateY(-2px);
+}
+
+.portraitPanel {
+  position: relative;
+  max-width: 30rem;
+  margin-left: auto;
+}
+
+.portraitPanel::before {
+  position: absolute;
+  inset: 1rem -1rem -1rem 1rem;
+  z-index: -1;
+  background:
+    linear-gradient(135deg, rgba(193, 255, 79, 0.06), transparent 42%),
+    rgba(8, 13, 11, 0.45);
+  border: 1px solid rgba(237, 246, 222, 0.08);
+  border-radius: 8px;
+  content: '';
+}
+
+.portraitFrame {
+  position: relative;
+  display: grid;
+  aspect-ratio: 1;
+  width: min(100%, 26.25rem);
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(circle, rgba(67, 239, 255, 0.06), transparent 62%),
+    linear-gradient(135deg, rgba(237, 246, 222, 0.035), rgba(8, 13, 11, 0.88));
+  border: 1px solid rgba(237, 246, 222, 0.14);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(237, 246, 222, 0.03),
+    0 28px 70px rgba(0, 0, 0, 0.38);
+}
+
+.portraitGrid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(237, 246, 222, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 246, 222, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.35;
+}
+
+.portraitImage,
+.portraitCanvas {
+  position: absolute;
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.24));
+}
+
+.portraitImage {
+  opacity: 0.98;
+  transform: scale(0.96);
+}
+
+.portraitCanvas {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.portraitReady .portraitCanvas {
+  opacity: 1;
+}
+
+.portraitReady .portraitImage {
+  opacity: 0.12;
+}
+
+.portraitFallbackOnly .portraitCanvas {
+  display: none;
+}
+
+.portraitFallbackOnly .portraitImage {
+  opacity: 1;
+}
+
+.portraitCaption {
+  margin: 0.85rem 0 0;
+  color: var(--signal-muted);
+  font-family: var(--signal-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  max-width: 1180px;
+  margin: 4rem auto 0;
+  padding: 1px;
+  background: rgba(237, 246, 222, 0.1);
+  border: 1px solid rgba(237, 246, 222, 0.1);
+  border-radius: 8px;
+}
+
+.proofItem {
+  min-width: 0;
+  padding: 1rem;
+  background:
+    linear-gradient(135deg, rgba(193, 255, 79, 0.025), transparent 42%),
+    rgba(12, 18, 15, 0.86);
+}
+
+.proofItem dt {
+  margin-bottom: 0.45rem;
+  color: var(--signal-soft);
+  font-family: var(--signal-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.proofItem dd {
+  margin: 0;
+  color: var(--signal-ink);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.reveal {
+  animation: revealSignal 720ms cubic-bezier(0.21, 0.9, 0.24, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes revealSignal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    min-height: auto;
+    padding-top: 4rem;
+  }
+
+  .heroShell {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .heroTitle {
+    max-width: 10ch;
+    font-size: 4.2rem;
+  }
+
+  .heroLead {
+    font-size: 1.12rem;
+  }
+
+  .portraitPanel {
+    width: min(100%, 28rem);
+    margin: 0;
+  }
+
+  .proofGrid {
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 520px) {
+  .heroBanner {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .heroTitle {
+    font-size: 3.25rem;
+  }
+
+  .heroActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .heroActions :global(.button) {
+    width: 100%;
+  }
+
+  .portraitCaption {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+
+  .portraitCanvas {
+    transition: none;
+  }
 }
