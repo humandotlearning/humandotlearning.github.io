@@ -94,6 +94,7 @@ const config = {
           //   label: 'Tutorial',
           // },
           {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/projects', label: 'Projects', position: 'left'},
           {
             href: 'https://github.com/humandotlearning',
             label: 'GitHub',
@@ -110,6 +111,10 @@ const config = {
               {
                 label: 'About Me',
                 to: '/aboutMe',
+              },
+              {
+                label: 'Projects',
+                to: '/projects',
               },
               {
                 label: 'Blog',

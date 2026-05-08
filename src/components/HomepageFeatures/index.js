@@ -3,7 +3,6 @@ import Heading from '@theme/Heading';
 import {
   Activity,
   ArrowUpRight,
-  BookOpen,
   ExternalLink,
   Eye,
   FileText,
@@ -66,11 +65,12 @@ const links = [
     to: '/aboutMe',
   },
   {
-    icon: BookOpen,
-    label: 'Writing',
-    title: 'Guitar Scale Visualiser',
-    description: 'An interactive fretboard project for scales, modes, and chords.',
-    to: '/blog/guitar-scale-visualiser',
+    icon: Layers,
+    label: 'Projects',
+    title: 'Latent Story, Flowriter.site, and Guitar Visualizer',
+    description:
+      'Personal projects and experiments across AI tools, storytelling, and music theory.',
+    to: '/projects',
   },
   {
     icon: Github,
