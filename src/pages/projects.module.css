@@ -1,7 +1,8 @@
 .projectsPage {
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   color: var(--signal-ink);
   background:
     linear-gradient(180deg, rgba(6, 9, 8, 0.52), rgba(6, 9, 8, 0.95) 24rem),
@@ -20,7 +21,10 @@
 
 .sectionShell {
   position: relative;
-  width: min(1180px, calc(100% - 3rem));
+  width: min(1180px, 100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 2.2vw, 1.5rem);
   margin: 0 auto;
 }
 
@@ -234,15 +238,20 @@
 
 @media screen and (max-width: 600px) {
   .sectionShell {
-    width: min(100% - 2rem, 1180px);
+    padding-inline: 1rem;
   }
 
   .section {
-    padding: 1.75rem 0 3rem;
+    padding: 1.35rem 0 2.4rem;
   }
 
   .section + .section {
-    padding-top: 3rem;
+    padding-top: 2.4rem;
+  }
+
+  .pageHeader h1,
+  .sectionHeader h2 {
+    font-size: clamp(2rem, 8vw, 2.45rem);
   }
 
   .cardHeader {
