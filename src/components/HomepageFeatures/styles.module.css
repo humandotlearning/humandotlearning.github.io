@@ -1,7 +1,8 @@
 .features {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   padding: 1rem 0 5rem;
   color: var(--signal-ink);
   background:
@@ -21,7 +22,10 @@
 }
 
 .sectionShell {
-  width: min(1180px, calc(100% - 3rem));
+  width: min(1180px, 100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 2.2vw, 1.5rem);
   margin: 0 auto;
 }
 
@@ -274,7 +278,7 @@
 
 @media screen and (max-width: 520px) {
   .sectionShell {
-    width: min(100% - 2rem, 1180px);
+    padding-inline: 1rem;
   }
 
   .sectionIntro h2,
