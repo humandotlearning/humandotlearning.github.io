@@ -2,75 +2,120 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import {
   Activity,
+  ArrowRight,
   ArrowUpRight,
+  BookOpen,
   ExternalLink,
   Eye,
   FileText,
   Gauge,
   Github,
   Layers,
+  Mail,
   Zap,
 } from 'lucide-react';
 import styles from './styles.module.css';
+
+const selectedWork = [
+  {
+    icon: BookOpen,
+    label: 'LangGraph product',
+    title: 'Latent Story',
+    description:
+      'A filesystem-centric multi-agent storybook pipeline with realtime streaming, generated illustrations, and print-ready PDF output.',
+    proof: 'Agents, image pipeline, persistent workspaces, PDF export',
+    to: '/projects/latent-story',
+  },
+  {
+    icon: Zap,
+    label: 'Voice-first agents',
+    title: 'FlowWriter',
+    description:
+      'A Socratic ideation tool that turns voice conversations into blogs, tweets, SCAMPER explorations, and product notes.',
+    proof: 'Voice workflow, LLM agents, structured writing outputs',
+    to: '/projects/flowwriter',
+  },
+  {
+    icon: Eye,
+    label: 'Production CV',
+    title: 'Industrial video analytics',
+    description:
+      'Led multi-site safety and operations analytics across mining, energy, banking, and retail environments.',
+    proof: 'Coal India workflows, HPCL wagon tracking, ATM analytics',
+    to: '/projects/industrial-cv',
+  },
+  {
+    icon: Gauge,
+    label: 'Interactive tool',
+    title: 'Guitar Visualizer',
+    description:
+      'A fretboard learning tool for exploring scales, modes, chords, notes, and custom tunings.',
+    proof: 'Interactive music theory interface with live fretboard views',
+    to: '/projects/guitar-visualizer',
+  },
+];
 
 const systems = [
   {
     icon: Activity,
     label: 'Agentic systems',
-    title: 'AI agents and multi-agent workflows',
+    title: 'Multi-agent workflows with product-shaped outputs',
     description:
-      'Worked across agentic AI systems, multi-agent coordination, and LangGraph-based workflows for practical AI applications.',
+      'I build agent loops around real artifacts: files, PDFs, voice flows, RAG contexts, tools, and stateful workspaces.',
   },
   {
     icon: Layers,
     label: 'LLM systems',
-    title: 'LLMs, fine-tuning, and applied workflows',
+    title: 'The layer between model output and real users',
     description:
-      'Built with LLMs beyond prompting, including fine-tuning and application patterns that turn model behavior into usable systems.',
+      'LLM work spans RAG, fine-tuning patterns, structured outputs, guardrails, workflow design, and product UX.',
   },
   {
     icon: Eye,
     label: 'Production computer vision',
-    title: 'Industrial and edge AI deployments',
+    title: 'Realtime analytics that survive field deployment',
     description:
-      'Led smart CCTV analytics, industrial monitoring, and edge computer vision deployments across RPi, CPU, and GPU targets.',
+      'I have shipped smart CCTV analytics, industrial monitoring, and edge inference across RPi, CPU, and GPU targets.',
   },
 ];
 
 const stack = [
-  'AI agents',
-  'Multi-agent workflows',
   'LangGraph',
-  'LLMs',
-  'LLM fine-tuning',
-  'Applied AI systems',
+  'RAG',
+  'LLM agents',
+  'Multi-agent workflows',
+  'Fine-tuning',
+  'PyTorch',
+  'TensorFlow',
   'TensorRT',
   'TFLite',
   'OpenVINO',
-  'RPi',
-  'CPU',
-  'GPU',
+  'Edge deployment',
+  'Raspberry Pi',
+  'CPU/GPU inference',
   'Video analytics',
   'Object detection',
   'OCR pipelines',
+  'Vector DB retrieval',
   'Facial recognition',
 ];
 
-const links = [
+const callsToAction = [
+  {
+    icon: Mail,
+    label: 'Contact',
+    title: 'Available for AI product engineering / consulting',
+    description:
+      'Useful when you need an agent product, LLM workflow, CV deployment, or prototype hardened into something people can use.',
+    href: 'mailto:nithin.varghese1357@gmail.com',
+  },
   {
     icon: FileText,
     label: 'About',
-    title: 'Experience and contact',
-    description: 'DeepSight AI Labs, freelance ML work, and ways to reach out.',
-    to: '/aboutMe',
-  },
-  {
-    icon: Layers,
-    label: 'Projects',
-    title: 'Latent Story, Flowriter.site, and Guitar Visualizer',
+    title: 'Experience and proof points',
     description:
-      'Personal projects and experiments across AI tools, storytelling, and music theory.',
-    to: '/projects',
+      'DeepSight AI Labs, independent AI products, industrial CV systems, and deployment history.',
+    to: '/aboutMe',
   },
   {
     icon: Github,
@@ -93,6 +138,28 @@ function SystemCard({item, index}) {
       <Heading as="h3">{item.title}</Heading>
       <p>{item.description}</p>
     </article>
+  );
+}
+
+function SelectedWorkCard({item}) {
+  const Icon = item.icon;
+
+  return (
+    <Link className={styles.selectedCard} to={item.to}>
+      <div className={styles.selectedMeta}>
+        <div className={styles.workIcon}>
+          <Icon size={20} strokeWidth={1.8} />
+        </div>
+        <span>{item.label}</span>
+      </div>
+      <Heading as="h3">{item.title}</Heading>
+      <p>{item.description}</p>
+      <div className={styles.selectedProof}>{item.proof}</div>
+      <div className={styles.selectedAction}>
+        Read case study
+        <ArrowRight size={16} strokeWidth={1.8} />
+      </div>
+    </Link>
   );
 }
 
@@ -121,8 +188,8 @@ function WorkLink({item}) {
       <a
         className={styles.workLink}
         href={item.href}
-        target="_blank"
-        rel="noopener noreferrer">
+        target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+        rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}>
         {content}
       </a>
     );
@@ -140,11 +207,29 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className={styles.sectionShell}>
         <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Applied AI range</p>
-          <Heading as="h2">AI systems across agents, language, and vision.</Heading>
+          <p className={styles.kicker}>Selected shipped work</p>
+          <Heading as="h2">Proof that the systems exist.</Heading>
           <p>
-            The work spans AI agents, multi-agent systems, LLMs, fine-tuning,
-            LangGraph workflows, smart CCTV analytics, and edge deployment.
+            A compact trail of agentic products, production computer vision,
+            edge inference, and tools that moved beyond a demo screen.
+          </p>
+        </div>
+
+        <div className={styles.selectedGrid}>
+          {selectedWork.map((item) => (
+            <SelectedWorkCard key={item.title} item={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.sectionShell}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.kicker}>Where I can ship immediately</p>
+          <Heading as="h2">I build the layer between model output and real users.</Heading>
+          <p>
+            The throughline is production judgment: state, latency, artifacts,
+            monitoring surfaces, field hardware, and interfaces that make AI
+            behavior usable.
           </p>
         </div>
 
@@ -160,7 +245,7 @@ export default function HomepageFeatures() {
           <div className={styles.stackHeader}>
             <div>
               <p className={styles.kicker}>AI engineering stack</p>
-              <Heading as="h2">Models shaped into reliable product workflows.</Heading>
+              <Heading as="h2">Tools for products, pipelines, and deployment.</Heading>
             </div>
             <div className={styles.stackMeters} aria-hidden="true">
               <span>
@@ -189,11 +274,11 @@ export default function HomepageFeatures() {
       <div className={styles.sectionShell}>
         <div className={styles.workGrid}>
           <div className={styles.workIntro}>
-            <p className={styles.kicker}>Next signals</p>
-            <Heading as="h2">Experience, writing, and project trails.</Heading>
+            <p className={styles.kicker}>Contact signal</p>
+            <Heading as="h2">Available for AI product engineering / consulting.</Heading>
           </div>
           <div className={styles.workLinks}>
-            {links.map((item) => (
+            {callsToAction.map((item) => (
               <WorkLink key={item.title} item={item} />
             ))}
           </div>

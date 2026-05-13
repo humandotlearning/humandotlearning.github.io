@@ -12,15 +12,11 @@ import portrait from '@site/static/img/profile_pixelart-removebg-preview.png';
 
 import {
   ArrowRight,
-  FileText,
   Github,
   Linkedin,
   Mail,
   Twitter,
 } from 'lucide-react';
-
-const resumeUrl =
-  'https://drive.google.com/file/d/12_Q1ttgEQCrrDUZC7xGs3TNrq8_ZvGNT/view?usp=sharing';
 
 const socialLinks = [
   {
@@ -47,16 +43,24 @@ const socialLinks = [
 
 const proofPoints = [
   {
-    label: 'Agentic AI',
-    value: 'AI agents, multi-agent workflows, and LangGraph systems',
+    label: '10,000+ cameras',
+    value: 'Exam proctoring analytics at national-exam scale',
   },
   {
-    label: 'LLM systems',
-    value: 'LLM applications, fine-tuning, and production AI workflows',
+    label: 'Industrial safety CV',
+    value: 'Mining, energy, banking, and retail video analytics',
   },
   {
-    label: 'Applied ML',
-    value: 'Computer vision, edge deployment, and model optimization',
+    label: 'Edge inference',
+    value: 'TFLite, TensorRT, and OpenVINO optimization',
+  },
+  {
+    label: 'Multi-agent products',
+    value: 'LangGraph storybook generation with print-ready PDFs',
+  },
+  {
+    label: 'Voice-first agents',
+    value: 'Socratic ideation workflows for structured writing outputs',
   },
 ];
 
@@ -193,7 +197,7 @@ function HomepageHeader() {
           <p
             className={clsx(styles.eyebrow, styles.reveal)}
             style={{'--delay': '80ms'}}>
-            Applied AI / Agents / Computer Vision
+            Applied AI Systems Engineer
           </p>
           <Heading
             as="h1"
@@ -203,17 +207,23 @@ function HomepageHeader() {
             {siteConfig.title}
           </Heading>
           <p
+            className={clsx(styles.heroClaim, styles.reveal)}
+            style={{'--delay': '220ms'}}>
+            I turn AI prototypes into deployed systems.
+          </p>
+          <p
             className={clsx(styles.heroLead, styles.reveal)}
-            style={{'--delay': '240ms'}}>
-            I build applied AI systems across agents, multi-agent workflows,
-            LLMs, fine-tuning, LangGraph, and production computer vision.
-            The throughline is turning models into systems people can use.
+            style={{'--delay': '280ms'}}>
+            Built multi-agent LLM products, real-time CCTV analytics, edge CV
+            pipelines, and 10,000+ camera-scale monitoring workflows. Former
+            Head CV Engineer now building agentic AI products with LangGraph,
+            RAG, voice workflows, and multimodal pipelines.
           </p>
           <div
             className={clsx(styles.heroActions, styles.reveal)}
-            style={{'--delay': '320ms'}}>
-            <Link className="button button--secondarycss button--lg" to="/aboutMe">
-              About Me
+            style={{'--delay': '360ms'}}>
+            <Link className="button button--secondarycss button--lg" to="/projects">
+              View Projects
               <ArrowRight size={18} strokeWidth={1.8} />
             </Link>
             <a
@@ -221,16 +231,14 @@ function HomepageHeader() {
                 'button button--secondarycss button--lg',
                 styles.ghostAction,
               )}
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer">
-              Resume
-              <FileText size={18} strokeWidth={1.8} />
+              href="mailto:nithin.varghese1357@gmail.com">
+              Contact
+              <Mail size={18} strokeWidth={1.8} />
             </a>
           </div>
           <div
             className={clsx(styles.socialIcons, styles.reveal)}
-            style={{'--delay': '400ms'}}>
+            style={{'--delay': '440ms'}}>
             {socialLinks.map(({Icon, href, label}) => (
               <SocialIcon key={label} Icon={Icon} href={href} label={label} />
             ))}
@@ -243,12 +251,12 @@ function HomepageHeader() {
           aria-label="Applied AI portrait treatment">
           <SignalPortrait />
           <p className={styles.portraitCaption}>
-            AI Systems Engineer / Agents / LLMs / Computer Vision
+            Production AI / Agents / LLMs / Computer Vision
           </p>
         </aside>
       </div>
 
-      <dl className={clsx(styles.proofGrid, styles.reveal)} style={{'--delay': '520ms'}}>
+      <dl className={clsx(styles.proofGrid, styles.reveal)} style={{'--delay': '560ms'}}>
         {proofPoints.map((item) => (
           <div key={item.label} className={styles.proofItem}>
             <dt>{item.label}</dt>
@@ -263,8 +271,8 @@ function HomepageHeader() {
 export default function Home() {
   return (
     <Layout
-      title="AI Systems Engineer"
-      description="Nithin Varghese builds applied AI systems across agents, multi-agent workflows, LLMs, fine-tuning, LangGraph, and computer vision.">
+      title="Production AI Systems Engineer"
+      description="Nithin Varghese turns AI prototypes into deployed systems across LLM agents, multi-agent workflows, and production computer vision.">
       <div className={styles.homeSurface}>
         <HomepageHeader />
         <main>

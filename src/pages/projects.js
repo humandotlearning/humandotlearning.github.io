@@ -14,90 +14,34 @@ import {
   Layers,
   Zap,
 } from 'lucide-react';
+import {caseStudyList} from '@site/src/data/caseStudies';
 import styles from './projects.module.css';
 
-const personalProjects = [
-  {
-    icon: BookOpen,
-    label: 'Story systems',
-    title: 'Latent Story',
-    description:
-      'A LangGraph multi-agent storybook pipeline that generates illustrated storybooks and print-ready PDFs with a real-time streaming UI and persistent workspaces.',
-    details: [
-      'Illustrated story generation',
-      'Print-ready PDF output',
-      'Real-time streaming interface',
-      'Filesystem-centric workspaces',
-    ],
-    links: [{label: 'Open project', href: 'https://latentstory.com'}],
-  },
-  {
-    icon: Zap,
-    label: 'Voice ideation',
-    title: 'Flowriter.site',
-    description:
-      'A voice-first Socratic ideation tool that converts conversations into structured outputs including blogs, tweets, SCAMPER explorations, and product notes using LLM agents.',
-    details: [
-      'Voice-first thinking flow',
-      'Socratic conversation loops',
-      'LLM agent workflows',
-      'Structured writing outputs',
-    ],
-    links: [{label: 'Open project', href: 'https://flowriter.site'}],
-  },
-  {
-    icon: Gauge,
-    label: 'Music learning',
-    title: 'Guitar Visualizer',
-    description:
-      'An interactive fretboard for exploring scales, modes, chords, individual notes, and custom tunings while learning guitar music theory.',
-    details: [
-      'Scale and mode visualization',
-      'Chord-aware fretboard views',
-      'Individual note highlighting',
-      'Custom tuning support',
-    ],
-    links: [
-      {
-        label: 'Open project',
-        href: 'https://humandotlearning.github.io/guitar_visualiser/',
-      },
-      {label: 'Read write-up', to: '/blog/guitar-scale-visualiser'},
-    ],
-  },
-];
+const iconMap = {
+  BookOpen,
+  Eye,
+  Gauge,
+  Zap,
+};
 
-const professionalProjects = [
-  {
-    icon: Eye,
-    label: 'Industrial vision',
-    title: 'Multi-site computer vision analytics',
-    description:
-      'Led production video analytics deployments across mining, energy, banking, and retail, covering model operations, architecture, and field rollout.',
-    details: [
-      'No-PPE, fire, intrusion, and zone-breach detection',
-      'Crowd, vehicle, tailgating, and idle-time analytics',
-      'Mining, energy, banking, and retail environments',
-    ],
-  },
-  {
-    icon: Activity,
-    label: 'Safety systems',
-    title: 'Operations and safety monitoring',
-    description:
-      'Delivered safety-critical analytics including ArcelorMittal person-under-steel-roll detection, ATM security analytics, and HPCL wagon tracking and counting.',
-    details: [
-      'Person-under-steel-roll detection',
-      'ATM security analytics',
-      'Wagon tracking and counting',
-    ],
-  },
+const featuredProjects = caseStudyList.map((study) => ({
+  icon: iconMap[study.icon],
+  label: study.label,
+  title: study.title,
+  description: study.indexSummary,
+  details: [study.proof, study.status],
+  diagramType: study.diagramType,
+  diagramSteps: study.diagramSteps,
+  links: [{label: 'Read case study', to: study.path}, ...study.links],
+}));
+
+const additionalProjects = [
   {
     icon: Layers,
     label: 'Scale',
     title: 'National exam proctoring analytics',
     description:
-      'Supported national exam monitoring workflows with analytics that scaled to more than 10,000 cameras per exam.',
+      'Supported exam monitoring workflows with analytics that scaled to more than 10,000 cameras per exam.',
     details: [
       'Large camera-fleet analytics',
       'Exam monitoring workflows',
@@ -105,11 +49,23 @@ const professionalProjects = [
     ],
   },
   {
+    icon: Activity,
+    label: 'Safety systems',
+    title: 'Operations and safety monitoring',
+    description:
+      'Delivered safety-critical analytics including person-under-steel-roll detection, ATM security analytics, and HPCL wagon tracking and counting.',
+    details: [
+      'Industrial hazard detection',
+      'ATM security analytics',
+      'Wagon tracking and counting',
+    ],
+  },
+  {
     icon: Gauge,
     label: 'Edge AI',
     title: 'Hardware-aware inference optimization',
     description:
-      'Architected edge-first real-time analytics and optimized inference across Raspberry Pi, CPU, and GPU deployments using TFLite, TensorRT, and OpenVINO.',
+      'Architected edge-first realtime analytics and optimized inference across Raspberry Pi, CPU, and GPU deployments using TFLite, TensorRT, and OpenVINO.',
     details: [
       'Raspberry Pi, CPU, and GPU targets',
       'TFLite, TensorRT, and OpenVINO',
@@ -161,11 +117,61 @@ function ProjectLink({item}) {
   );
 }
 
+function PipelinePreview({steps}) {
+  return (
+    <div className={styles.cardPipeline} aria-hidden="true">
+      {steps.map((step, index) => (
+        <span key={step}>
+          <b>{String(index + 1).padStart(2, '0')}</b>
+          {step}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function FretboardPreview() {
+  const frets = Array.from({length: 5}, (_, fretIndex) => fretIndex);
+  const strings = Array.from({length: 4}, (_, stringIndex) => stringIndex);
+  const activeNotes = new Set(['0-1', '1-3', '2-0', '3-4']);
+
+  return (
+    <div className={styles.cardFretboard} aria-hidden="true">
+      {strings.map((stringIndex) => (
+        <div key={stringIndex}>
+          {frets.map((fretIndex) => {
+            const noteKey = `${stringIndex}-${fretIndex}`;
+            return (
+              <span
+                className={activeNotes.has(noteKey) ? styles.activeNote : undefined}
+                key={noteKey}
+              />
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProjectDiagram({project}) {
+  if (!project.diagramType) {
+    return null;
+  }
+
+  return project.diagramType === 'fretboard' ? (
+    <FretboardPreview />
+  ) : (
+    <PipelinePreview steps={project.diagramSteps} />
+  );
+}
+
 function ProjectCard({project, featured = false}) {
   const Icon = project.icon;
 
   return (
     <article className={featured ? styles.featuredCard : styles.projectCard}>
+      <ProjectDiagram project={project} />
       <div className={styles.cardHeader}>
         <div className={styles.iconShell}>
           <Icon size={22} strokeWidth={1.8} />
@@ -194,34 +200,38 @@ export default function Projects() {
   return (
     <Layout
       title="Projects"
-      description="Personal and professional projects by Nithin Varghese across AI agents, creative tools, music learning, and production computer vision.">
+      description="Case studies and production systems by Nithin Varghese across AI agents, creative tools, music learning, and production computer vision.">
       <main className={styles.projectsPage}>
-        <section className={styles.section} aria-labelledby="personal-projects">
+        <section className={styles.section} aria-labelledby="case-studies">
           <div className={styles.sectionShell}>
             <div className={styles.pageHeader}>
-              <p className={styles.kicker}>Personal Projects</p>
-              <Heading as="h1" id="personal-projects">
-                Projects
+              <p className={styles.kicker}>Selected shipped work</p>
+              <Heading as="h1" id="case-studies">
+                Projects with receipts.
               </Heading>
+              <p>
+                Agentic products, real-time video analytics, and practical tools
+                shown as case studies instead of loose feature blurbs.
+              </p>
             </div>
-            <div className={styles.personalGrid}>
-              {personalProjects.map((project) => (
+            <div className={styles.featuredGrid}>
+              {featuredProjects.map((project) => (
                 <ProjectCard key={project.title} project={project} featured />
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="professional-projects">
+        <section className={styles.section} aria-labelledby="additional-proof">
           <div className={styles.sectionShell}>
             <div className={styles.sectionHeader}>
-              <p className={styles.kicker}>Professional Projects</p>
-              <Heading as="h2" id="professional-projects">
-                Production systems
+              <p className={styles.kicker}>Additional production proof</p>
+              <Heading as="h2" id="additional-proof">
+                Systems shipped into real constraints.
               </Heading>
             </div>
             <div className={styles.professionalGrid}>
-              {professionalProjects.map((project) => (
+              {additionalProjects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>

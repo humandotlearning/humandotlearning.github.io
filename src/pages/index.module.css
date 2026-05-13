@@ -96,10 +96,21 @@
 
 .heroLead {
   max-width: 42rem;
-  margin: 1.5rem 0 0;
+  margin: 1rem 0 0;
   color: var(--signal-muted);
   font-size: 1.28rem;
   line-height: 1.55;
+}
+
+.heroClaim {
+  max-width: 42rem;
+  margin: 1.55rem 0 0;
+  color: var(--signal-ink-strong);
+  font-family: var(--signal-font-display);
+  font-size: clamp(1.95rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: 0;
 }
 
 .heroActions {
@@ -252,7 +263,7 @@
 
 .proofGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
   max-width: 1180px;
   margin: 4rem auto 0;
@@ -325,13 +336,17 @@
     font-size: 1.12rem;
   }
 
+  .heroClaim {
+    font-size: 2.45rem;
+  }
+
   .portraitPanel {
     width: min(100%, 28rem);
     margin: 0;
   }
 
   .proofGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 3rem;
   }
 }
@@ -346,6 +361,10 @@
     font-size: 3.25rem;
   }
 
+  .heroClaim {
+    font-size: 2.1rem;
+  }
+
   .heroActions {
     align-items: stretch;
     flex-direction: column;
@@ -357,6 +376,10 @@
 
   .portraitCaption {
     text-align: left;
+  }
+
+  .proofGrid {
+    grid-template-columns: 1fr;
   }
 }
 

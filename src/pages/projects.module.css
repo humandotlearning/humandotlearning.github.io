@@ -43,6 +43,14 @@
   margin-bottom: 1rem;
 }
 
+.pageHeader p:not(.kicker) {
+  max-width: 42rem;
+  margin: 0.9rem 0 0;
+  color: var(--signal-muted);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
 .pageHeader h1 {
   margin: 0;
   color: var(--signal-ink-strong);
@@ -70,10 +78,15 @@
   letter-spacing: 0;
 }
 
+.featuredGrid,
 .personalGrid,
 .professionalGrid {
   display: grid;
   gap: 1rem;
+}
+
+.featuredGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .personalGrid {
@@ -105,6 +118,79 @@
 
 .projectCard {
   min-height: 22rem;
+}
+
+.cardPipeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  min-height: 6.8rem;
+  padding: 1px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  background: rgba(237, 246, 222, 0.1);
+  border: 1px solid rgba(237, 246, 222, 0.1);
+  border-radius: 8px;
+}
+
+.cardPipeline span {
+  display: grid;
+  align-content: space-between;
+  min-width: 0;
+  padding: 0.72rem;
+  color: var(--signal-ink);
+  background:
+    linear-gradient(135deg, rgba(67, 239, 255, 0.04), transparent 52%),
+    rgba(6, 10, 8, 0.88);
+  font-family: var(--signal-font-mono);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.cardPipeline b {
+  color: var(--signal-cyan);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.cardFretboard {
+  display: grid;
+  gap: 0.48rem;
+  min-height: 6.8rem;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(67, 239, 255, 0.06), transparent),
+    rgba(6, 10, 8, 0.88);
+  border: 1px solid rgba(237, 246, 222, 0.12);
+  border-radius: 8px;
+}
+
+.cardFretboard div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55rem;
+  align-items: center;
+  min-height: 0.6rem;
+  background: linear-gradient(to bottom, transparent 45%, rgba(237, 246, 222, 0.18) 45% 55%, transparent 55%);
+}
+
+.cardFretboard span,
+.fretboardDiagram span {
+  display: block;
+  aspect-ratio: 1;
+  width: 0.78rem;
+  justify-self: center;
+  background: rgba(237, 246, 222, 0.12);
+  border: 1px solid rgba(237, 246, 222, 0.16);
+  border-radius: 50%;
+}
+
+.cardFretboard .activeNote,
+.fretboardDiagram .activeNote {
+  background: var(--signal-lime);
+  border-color: var(--signal-lime);
+  box-shadow: 0 0 18px rgba(193, 255, 79, 0.42);
 }
 
 .cardHeader {
@@ -224,15 +310,233 @@
   border-color: rgba(193, 255, 79, 0.24);
 }
 
+.caseStudyShell {
+  position: relative;
+  width: min(1040px, 100%);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 3rem clamp(1rem, 2.2vw, 1.5rem) 5rem;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: var(--signal-muted);
+  font-family: var(--signal-font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--signal-lime);
+  text-decoration: none;
+}
+
+.caseHero {
+  max-width: 820px;
+  margin-bottom: 2rem;
+}
+
+.caseHero h1 {
+  margin: 0;
+  color: var(--signal-ink-strong);
+  font-family: var(--signal-font-display);
+  font-size: clamp(2.65rem, 7vw, 5.2rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.caseHeadline {
+  max-width: 48rem;
+  margin: 1rem 0 0;
+  color: var(--signal-ink);
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.caseSummary {
+  max-width: 46rem;
+  margin: 1rem 0 0;
+  color: var(--signal-muted);
+  font-size: 1.08rem;
+  line-height: 1.68;
+}
+
+.statusPill {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 1.15rem;
+  padding: 0.55rem 0.7rem;
+  color: var(--signal-cyan);
+  background: rgba(67, 239, 255, 0.055);
+  border: 1px solid rgba(67, 239, 255, 0.18);
+  border-radius: 6px;
+  font-family: var(--signal-font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.caseOverview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+.caseDiagramPanel,
+.caseMetaPanel,
+.caseSections section {
+  background:
+    linear-gradient(135deg, rgba(193, 255, 79, 0.032), transparent 42%),
+    rgba(13, 19, 16, 0.86);
+  border: 1px solid rgba(237, 246, 222, 0.14);
+  border-radius: 8px;
+}
+
+.caseDiagramPanel,
+.caseMetaPanel {
+  padding: 1.2rem;
+}
+
+.caseDiagramPanel h2,
+.caseMetaPanel h2,
+.caseSections h2 {
+  margin: 0;
+  color: var(--signal-ink-strong);
+  font-family: var(--signal-font-display);
+  letter-spacing: 0;
+}
+
+.caseDiagramPanel h2,
+.caseMetaPanel h2 {
+  font-size: 1.55rem;
+}
+
+.caseMetaPanel p {
+  margin: 1rem 0 0;
+  color: var(--signal-muted);
+  line-height: 1.6;
+}
+
+.caseStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.caseStack span {
+  padding: 0.55rem 0.65rem;
+  color: var(--signal-ink);
+  background: rgba(6, 10, 8, 0.82);
+  border: 1px solid rgba(237, 246, 222, 0.12);
+  border-radius: 6px;
+  font-family: var(--signal-font-mono);
+  font-size: 0.74rem;
+}
+
+.pipelineDiagram {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  min-height: 16rem;
+  padding: 1px;
+  margin-top: 1.2rem;
+  overflow: hidden;
+  background: rgba(237, 246, 222, 0.12);
+  border: 1px solid rgba(237, 246, 222, 0.12);
+  border-radius: 8px;
+}
+
+.pipelineStep {
+  display: grid;
+  align-content: space-between;
+  min-width: 0;
+  padding: 1rem;
+  color: var(--signal-ink);
+  background:
+    linear-gradient(135deg, rgba(67, 239, 255, 0.05), transparent 54%),
+    rgba(6, 10, 8, 0.9);
+}
+
+.pipelineStep span {
+  color: var(--signal-cyan);
+  font-family: var(--signal-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pipelineStep strong {
+  color: var(--signal-ink);
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.fretboardDiagram {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 16rem;
+  padding: 1.2rem;
+  margin-top: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(67, 239, 255, 0.06), transparent),
+    rgba(6, 10, 8, 0.9);
+  border: 1px solid rgba(237, 246, 222, 0.12);
+  border-radius: 8px;
+}
+
+.fretboardString {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: center;
+  background: linear-gradient(to bottom, transparent 45%, rgba(237, 246, 222, 0.2) 45% 55%, transparent 55%);
+}
+
+.caseSections {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.caseSections section {
+  padding: 1.2rem;
+}
+
+.caseSections h2 {
+  font-size: 1.35rem;
+}
+
+.caseSections p {
+  margin: 0.75rem 0 0;
+  color: var(--signal-muted);
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
 @media screen and (max-width: 996px) {
+  .featuredGrid,
   .personalGrid,
-  .professionalGrid {
+  .professionalGrid,
+  .caseOverview,
+  .pipelineDiagram {
     grid-template-columns: 1fr;
   }
 
   .featuredCard,
   .projectCard {
     min-height: auto;
+  }
+
+  .cardPipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -254,8 +558,20 @@
     font-size: clamp(2rem, 8vw, 2.45rem);
   }
 
+  .caseStudyShell {
+    padding-top: 2rem;
+  }
+
   .cardHeader {
     margin-bottom: 1.4rem;
+  }
+
+  .cardPipeline {
+    grid-template-columns: 1fr;
+  }
+
+  .pipelineStep {
+    min-height: 7rem;
   }
 }
 
