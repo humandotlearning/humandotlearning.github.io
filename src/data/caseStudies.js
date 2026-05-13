@@ -39,8 +39,8 @@ export const caseStudies = {
     indexSummary:
       'Voice-first Socratic ideation workflow that converts conversations into structured writing outputs with LLM agents.',
     proof: 'Voice capture, Socratic loops, structured blogs/tweets/notes',
-    status: 'Demo temporarily unavailable. Case study remains available.',
-    links: [],
+    status: 'Live project available.',
+    links: [{label: 'Open live project', href: 'https://flowwriter.site/'}],
     diagramType: 'pipeline',
     diagramSteps: ['Voice input', 'Socratic loop', 'LLM agent pass', 'Structured outputs'],
     problem:
@@ -60,27 +60,56 @@ export const caseStudies = {
     path: '/projects/industrial-cv',
     icon: 'Eye',
     label: 'Production CV',
-    title: 'Industrial Computer Vision',
-    headline: 'Realtime video analytics for field environments.',
+    title: 'Production Video Analytics for Mines',
+    headline: 'Large-scale mine safety analytics across 7 deployed sites.',
     summary:
-      'Production CCTV analytics across mining, energy, banking, and retail, including safety detection, operations monitoring, edge inference, and camera-fleet workflows.',
+      'Production CCTV analytics across mining, energy, banking, and retail, including mine safety detection, operations monitoring, edge inference, and camera-fleet workflows.',
     indexSummary:
-      'Production safety and operations analytics across mining, energy, banking, and retail environments.',
-    proof: '10,000+ camera analytics, safety detection, edge inference',
-    status: 'Client systems summarized without confidential screenshots.',
+      'Production video analytics for mines and field sites: safety events, compliance alerts, dashboards, and edge/cloud monitoring.',
+    proof: '12 analytics use cases across 7 mines; 1.4M+ AI events raised',
+    status: 'Reference article and anonymized case study available.',
     links: [],
+    references: [
+      {
+        label: 'Mining reference article',
+        href: 'https://www.linkedin.com/pulse/mining-use-case-physical-digital-transformation-7-mines-nqvje/',
+      },
+    ],
+    gallery: [
+      {
+        title: 'Mining analytics dashboard',
+        caption:
+          'Dashboard view used to track safety and compliance events across deployed mine sites.',
+        src: 'https://media.licdn.com/dms/image/v2/D4E12AQGGGeyNH7qFPQ/article-inline_image-shrink_400_744/article-inline_image-shrink_400_744/0/1723126908121?e=2147483647&v=beta&t=WizPF4Os8R7FoSCPoNgECK7qwjijAazBb2saf_GZ2Go',
+        alt: 'DeepSight mining video analytics dashboard from LinkedIn article',
+      },
+      {
+        title: 'Real-time image evidence',
+        caption:
+          'Detected events are captured as timestamped image evidence for validation and response.',
+        src: 'https://media.licdn.com/dms/image/v2/D4E12AQEj7Hj-pGKsmA/article-inline_image-shrink_400_744/article-inline_image-shrink_400_744/0/1723126954629?e=2147483647&v=beta&t=DZXp1ZdZnmQzC2n_RmHprki669EvEzJ33tFThdC39a0',
+        alt: 'Real-time image capture popup from mining video analytics article',
+      },
+      {
+        title: 'Real-time video evidence',
+        caption:
+          'Alert workflows include short video snippets so teams can verify events before acting.',
+        src: 'https://media.licdn.com/dms/image/v2/D4E12AQFnU79Gujcbvg/article-inline_image-shrink_400_744/article-inline_image-shrink_400_744/0/1723126973565?e=2147483647&v=beta&t=MNt0-VeADgV90u6D2juYSDqpelgdEH1FTjLUXPD5VDY',
+        alt: 'Real-time video snippet interface from mining video analytics article',
+      },
+    ],
     diagramType: 'pipeline',
-    diagramSteps: ['Camera fleet', 'Edge/cloud inference', 'Safety analytics', 'Alerts + ops review'],
+    diagramSteps: ['Existing CCTV', 'Local inference', 'Cloud dashboard', 'Team response'],
     problem:
-      'Industrial and large-site video analytics must survive field hardware, camera variation, latency constraints, false-positive costs, and operational rollout pressure.',
+      'Coal mines needed real-time visibility into physical activity, safety compliance, restricted-area access, fire risk, traffic flow, and response workflows across existing camera infrastructure.',
     built:
-      'Led delivery of multi-site analytics including no-PPE detection, fire detection, intrusion, crowd and vehicle counting, tailgating, idle time, zone-breach detection, ATM analytics, HPCL wagon tracking, and national exam workflows scaling to more than 10,000 cameras per exam.',
+      'Led delivery of multi-site analytics including PPE compliance, fire and smoke detection, human and vehicle intrusion, vehicle counting and classification, tailgating, crowd detection, over-manning, idle-time alerts, ATM analytics, HPCL wagon tracking, and national exam workflows scaling to more than 10,000 cameras per exam.',
     difficulty:
-      'The difficult work sat between model accuracy and deployment reality: throughput, edge constraints, camera quality, alert usability, and reliable behavior across different sites.',
+      'The difficult work sat between model accuracy and deployment reality: old IP and analog cameras, hybrid local/cloud dashboards, event routing by priority, throughput, edge constraints, camera quality, alert usability, and reliable behavior across different sites.',
     outcome:
-      'Shipped production systems across mining, energy, banking, and retail while optimizing inference across Raspberry Pi, CPU, and GPU targets.',
+      'The mining deployment raised more than 1.4 million AI events across 7 mines, supported team-based response workflows, and reported safety and compliance improvement into the 90-95% range.',
     next:
-      'Continue pushing toward better monitoring, calibration workflows, and deployment playbooks that reduce field iteration time.',
+      'Continue pushing toward better monitoring, calibration workflows, root-cause dashboards, and deployment playbooks that reduce field iteration time.',
     stack: ['Computer vision', 'Video analytics', 'PyTorch', 'TFLite', 'TensorRT', 'OpenVINO', 'Raspberry Pi', 'CPU/GPU inference'],
   },
   guitarVisualizer: {
@@ -120,8 +149,8 @@ export const caseStudies = {
 };
 
 export const caseStudyList = [
+  caseStudies.industrialCv,
   caseStudies.latentStory,
   caseStudies.flowwriter,
-  caseStudies.industrialCv,
   caseStudies.guitarVisualizer,
 ];

@@ -3,18 +3,8 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import {
-  Activity,
-  ArrowUpRight,
-  BookOpen,
-  ExternalLink,
-  Eye,
-  FileText,
-  Gauge,
-  Layers,
-  Zap,
-} from 'lucide-react';
-import {caseStudyList} from '@site/src/data/caseStudies';
+import {Activity, ArrowUpRight, BookOpen, ExternalLink, Eye, Gauge, Layers, Zap} from 'lucide-react';
+import {caseStudies} from '@site/src/data/caseStudies';
 import styles from './projects.module.css';
 
 const iconMap = {
@@ -24,66 +14,61 @@ const iconMap = {
   Zap,
 };
 
-const featuredProjects = caseStudyList.map((study) => ({
-  icon: iconMap[study.icon],
-  label: study.label,
-  title: study.title,
-  description: study.indexSummary,
-  details: [study.proof, study.status],
-  diagramType: study.diagramType,
-  diagramSteps: study.diagramSteps,
-  links: [{label: 'Read case study', to: study.path}, ...study.links],
-}));
-
-const additionalProjects = [
-  {
-    icon: Layers,
-    label: 'Scale',
-    title: 'National exam proctoring analytics',
-    description:
-      'Supported exam monitoring workflows with analytics that scaled to more than 10,000 cameras per exam.',
-    details: [
-      'Large camera-fleet analytics',
-      'Exam monitoring workflows',
-      'Production deployment support',
+function toProject(study, overrides = {}) {
+  return {
+    icon: iconMap[study.icon],
+    label: study.label,
+    title: study.title,
+    description: study.indexSummary,
+    proof: study.proof,
+    status: study.status,
+    links: [
+      {label: 'Read case study', to: study.path},
+      ...study.links,
+      ...(study.references ?? []),
     ],
+    ...overrides,
+  };
+}
+
+const productionProjects = [
+  toProject(caseStudies.industrialCv),
+  toProject(caseStudies.latentStory),
+  toProject(caseStudies.flowwriter),
+];
+
+const additionalDeployments = [
+  {
+    icon: Gauge,
+    label: 'Scale',
+    title: 'National Exam Proctoring Analytics',
+    description: '10,000+ camera-scale monitoring workflows for exam operations.',
   },
   {
     icon: Activity,
-    label: 'Safety systems',
-    title: 'Operations and safety monitoring',
+    label: 'Safety',
+    title: 'Industrial Safety Monitoring',
     description:
-      'Delivered safety-critical analytics including person-under-steel-roll detection, ATM security analytics, and HPCL wagon tracking and counting.',
-    details: [
-      'Industrial hazard detection',
-      'ATM security analytics',
-      'Wagon tracking and counting',
-    ],
+      'Safety analytics for field environments, including hazard and compliance monitoring.',
   },
   {
-    icon: Gauge,
-    label: 'Edge AI',
-    title: 'Hardware-aware inference optimization',
-    description:
-      'Architected edge-first realtime analytics and optimized inference across Raspberry Pi, CPU, and GPU deployments using TFLite, TensorRT, and OpenVINO.',
-    details: [
-      'Raspberry Pi, CPU, and GPU targets',
-      'TFLite, TensorRT, and OpenVINO',
-      'Throughput, latency, and reliability tuning',
-    ],
+    icon: Eye,
+    label: 'Security',
+    title: 'ATM Security Analytics',
+    description: 'Security-focused video analytics for banking environments.',
   },
   {
-    icon: FileText,
-    label: 'Applied ML',
-    title: 'Receipt information extraction',
-    description:
-      'Built a freelance receipt extraction system using YOLOv3-based object detection and OCR to transform receipt images into structured CSV outputs.',
-    details: [
-      'YOLOv3 object detection',
-      'OCR-based extraction',
-      'Structured CSV output',
-    ],
+    icon: Layers,
+    label: 'Operations',
+    title: 'HPCL Wagon Tracking',
+    description: 'Wagon tracking and counting workflows for industrial operations.',
   },
+];
+
+const personalProjects = [
+  toProject(caseStudies.guitarVisualizer, {
+    label: 'Fun personal project',
+  }),
 ];
 
 function ProjectLink({item}) {
@@ -117,74 +102,41 @@ function ProjectLink({item}) {
   );
 }
 
-function PipelinePreview({steps}) {
-  return (
-    <div className={styles.cardPipeline} aria-hidden="true">
-      {steps.map((step, index) => (
-        <span key={step}>
-          <b>{String(index + 1).padStart(2, '0')}</b>
-          {step}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function FretboardPreview() {
-  const frets = Array.from({length: 5}, (_, fretIndex) => fretIndex);
-  const strings = Array.from({length: 4}, (_, stringIndex) => stringIndex);
-  const activeNotes = new Set(['0-1', '1-3', '2-0', '3-4']);
+function DeploymentCard({deployment}) {
+  const Icon = deployment.icon;
 
   return (
-    <div className={styles.cardFretboard} aria-hidden="true">
-      {strings.map((stringIndex) => (
-        <div key={stringIndex}>
-          {frets.map((fretIndex) => {
-            const noteKey = `${stringIndex}-${fretIndex}`;
-            return (
-              <span
-                className={activeNotes.has(noteKey) ? styles.activeNote : undefined}
-                key={noteKey}
-              />
-            );
-          })}
+    <article className={styles.deploymentCard}>
+      <div className={styles.cardHeader}>
+        <div className={styles.iconShell}>
+          <Icon size={19} strokeWidth={1.8} />
         </div>
-      ))}
-    </div>
+        <span>{deployment.label}</span>
+      </div>
+      <Heading as="h3">{deployment.title}</Heading>
+      <p>{deployment.description}</p>
+    </article>
   );
 }
 
-function ProjectDiagram({project}) {
-  if (!project.diagramType) {
-    return null;
-  }
-
-  return project.diagramType === 'fretboard' ? (
-    <FretboardPreview />
-  ) : (
-    <PipelinePreview steps={project.diagramSteps} />
-  );
-}
-
-function ProjectCard({project, featured = false}) {
+function ProjectCard({project}) {
   const Icon = project.icon;
 
   return (
-    <article className={featured ? styles.featuredCard : styles.projectCard}>
-      <ProjectDiagram project={project} />
+    <article className={styles.projectCard}>
       <div className={styles.cardHeader}>
         <div className={styles.iconShell}>
-          <Icon size={22} strokeWidth={1.8} />
+          <Icon size={20} strokeWidth={1.8} />
         </div>
         <span>{project.label}</span>
       </div>
       <Heading as="h3">{project.title}</Heading>
-      <p>{project.description}</p>
-      <ul className={styles.detailList}>
-        {project.details.map((detail) => (
-          <li key={detail}>{detail}</li>
-        ))}
-      </ul>
+      <p className={styles.projectSummary}>{project.description}</p>
+      <div className={styles.projectProof}>
+        <span>Proof</span>
+        <strong>{project.proof}</strong>
+      </div>
+      <p className={styles.projectStatus}>{project.status}</p>
       {project.links ? (
         <div className={styles.cardActions}>
           {project.links.map((link) => (
@@ -205,33 +157,50 @@ export default function Projects() {
         <section className={styles.section} aria-labelledby="case-studies">
           <div className={styles.sectionShell}>
             <div className={styles.pageHeader}>
-              <p className={styles.kicker}>Selected shipped work</p>
+              <p className={styles.kicker}>Production first</p>
               <Heading as="h1" id="case-studies">
-                Projects with receipts.
+                Projects
               </Heading>
               <p>
-                Agentic products, real-time video analytics, and practical tools
-                shown as case studies instead of loose feature blurbs.
+                Production deployments first, then agent products and personal
+                tools. Open the live projects, or read the short case study when
+                you want the details.
               </p>
             </div>
             <div className={styles.featuredGrid}>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.title} project={project} featured />
+              {productionProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="additional-proof">
+        <section className={styles.section} aria-labelledby="more-production">
           <div className={styles.sectionShell}>
             <div className={styles.sectionHeader}>
-              <p className={styles.kicker}>Additional production proof</p>
-              <Heading as="h2" id="additional-proof">
-                Systems shipped into real constraints.
+              <p className={styles.kicker}>More production deployments</p>
+              <Heading as="h2" id="more-production">
+                More production deployments
               </Heading>
             </div>
-            <div className={styles.professionalGrid}>
-              {additionalProjects.map((project) => (
+            <div className={styles.deploymentGrid}>
+              {additionalDeployments.map((deployment) => (
+                <DeploymentCard deployment={deployment} key={deployment.title} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section} aria-labelledby="personal-projects">
+          <div className={styles.sectionShell}>
+            <div className={styles.sectionHeader}>
+              <p className={styles.kicker}>Personal project</p>
+              <Heading as="h2" id="personal-projects">
+                Fun side build.
+              </Heading>
+            </div>
+            <div className={styles.personalGrid}>
+              {personalProjects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>
