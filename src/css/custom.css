@@ -161,6 +161,11 @@ body {
   border-bottom: 1px solid var(--signal-line);
 }
 
+.navbar__toggle,
+.navbar-sidebar__close {
+  color: var(--signal-ink);
+}
+
 .footer {
   position: relative;
   padding: 2.5rem 0;
@@ -605,6 +610,78 @@ pre code {
   .about-avatar-frame {
     width: 150px;
     height: 150px;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .navbar-sidebar {
+    width: min(84vw, 20rem);
+    max-width: 100vw;
+    height: 100dvh;
+    background:
+      linear-gradient(135deg, rgba(193, 255, 79, 0.035), transparent 42%),
+      var(--signal-panel);
+    border-right: 1px solid var(--signal-line);
+    box-shadow: 18px 0 44px rgba(0, 0, 0, 0.32);
+  }
+
+  .navbar-sidebar__brand {
+    height: var(--ifm-navbar-height);
+    padding-inline: 0.75rem;
+    background: rgba(6, 9, 8, 0.96);
+  }
+
+  .navbar-sidebar__items {
+    display: flex;
+    min-height: calc(100dvh - var(--ifm-navbar-height));
+    flex-direction: column;
+    padding: 0.8rem;
+    overflow-y: auto;
+    background: transparent;
+  }
+
+  .navbar-sidebar__item {
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .navbar-sidebar .menu {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar-sidebar .menu__list {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar-sidebar .menu__link {
+    display: flex;
+    min-height: 2.75rem;
+    align-items: center;
+    padding: 0.72rem 0.8rem;
+    color: var(--signal-ink);
+    background: rgba(237, 246, 222, 0.035);
+    border: 1px solid rgba(237, 246, 222, 0.12);
+    border-radius: 8px;
+    font-family: var(--signal-font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .navbar-sidebar .menu__link:hover,
+  .navbar-sidebar .menu__link--active {
+    color: var(--signal-bg);
+    background: var(--signal-lime);
+    border-color: var(--signal-lime);
+  }
+
+  .navbar-sidebar__backdrop {
+    background: rgba(0, 0, 0, 0.58);
   }
 }
 
