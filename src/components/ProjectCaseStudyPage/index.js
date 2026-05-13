@@ -88,7 +88,46 @@ function CaseDiagram({study}) {
   );
 }
 
+function CaseGallery({study}) {
+  if (!study.gallery?.length) {
+    return null;
+  }
+
+  const source = study.references?.[0];
+
+  return (
+    <section className={styles.caseGallery} aria-labelledby={`${study.slug}-gallery`}>
+      <div className={styles.caseGalleryHeader}>
+        <p className={styles.kicker}>Reference visuals</p>
+        <Heading as="h2" id={`${study.slug}-gallery`}>
+          Field evidence from the mining deployment
+        </Heading>
+        {source ? (
+          <a href={source.href} target="_blank" rel="noopener noreferrer">
+            Source: {source.label}
+            <ExternalLink size={15} strokeWidth={1.8} />
+          </a>
+        ) : null}
+      </div>
+
+      <div className={styles.galleryGrid}>
+        {study.gallery.map((item) => (
+          <figure className={styles.galleryItem} key={item.title}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+            <figcaption>
+              <strong>{item.title}</strong>
+              <span>{item.caption}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function ProjectCaseStudyPage({study}) {
+  const heroLinks = [...study.links, ...(study.references ?? [])];
+
   return (
     <Layout title={study.title} description={study.summary}>
       <main className={styles.projectsPage}>
@@ -104,9 +143,9 @@ export default function ProjectCaseStudyPage({study}) {
             <p className={styles.caseHeadline}>{study.headline}</p>
             <p className={styles.caseSummary}>{study.summary}</p>
             <div className={styles.statusPill}>{study.status}</div>
-            {study.links.length ? (
+            {heroLinks.length ? (
               <div className={styles.cardActions}>
-                {study.links.map((link) => (
+                {heroLinks.map((link) => (
                   <CaseLink key={link.label} item={link} />
                 ))}
               </div>
@@ -127,6 +166,8 @@ export default function ProjectCaseStudyPage({study}) {
               </div>
             </aside>
           </div>
+
+          <CaseGallery study={study} />
 
           <div className={styles.caseSections}>
             <section>

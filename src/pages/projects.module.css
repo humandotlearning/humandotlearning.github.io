@@ -4,15 +4,13 @@
   overflow-x: hidden;
   overflow-y: visible;
   color: var(--signal-ink);
-  background:
-    linear-gradient(180deg, rgba(6, 9, 8, 0.52), rgba(6, 9, 8, 0.95) 24rem),
-    var(--signal-bg);
+  background: var(--signal-bg);
 }
 
 .projectsPage::before {
   position: absolute;
   inset: 0;
-  opacity: 0.08;
+  opacity: 0.045;
   background-image: url('/img/noise.png');
   background-size: 340px 340px;
   pointer-events: none;
@@ -21,7 +19,7 @@
 
 .sectionShell {
   position: relative;
-  width: min(1180px, 100%);
+  width: min(1080px, 100%);
   max-width: 100%;
   box-sizing: border-box;
   padding-inline: clamp(1rem, 2.2vw, 1.5rem);
@@ -29,43 +27,46 @@
 }
 
 .section {
-  padding: 2.25rem 0 3.75rem;
+  padding: 2rem 0 3rem;
 }
 
 .section + .section {
-  padding-top: 3.75rem;
-  border-top: 1px solid var(--signal-line);
+  padding-top: 0;
 }
 
-.pageHeader,
-.sectionHeader {
-  max-width: 760px;
-  margin-bottom: 1rem;
+.pageHeader {
+  max-width: 680px;
+  margin-bottom: 1.25rem;
 }
 
 .pageHeader p:not(.kicker) {
-  max-width: 42rem;
-  margin: 0.9rem 0 0;
+  max-width: 40rem;
+  margin: 0.75rem 0 0;
   color: var(--signal-muted);
-  font-size: 1.06rem;
-  line-height: 1.65;
+  font-size: 1.04rem;
+  line-height: 1.6;
 }
 
 .pageHeader h1 {
   margin: 0;
   color: var(--signal-ink-strong);
   font-family: var(--signal-font-display);
-  font-size: clamp(2.35rem, 5vw, 4rem);
+  font-size: clamp(2.35rem, 5vw, 3.7rem);
   line-height: 1;
   letter-spacing: 0;
 }
 
+.sectionHeader {
+  max-width: 680px;
+  margin-bottom: 1rem;
+}
+
 .sectionHeader h2 {
   margin: 0;
-  color: var(--signal-ink);
+  color: var(--signal-ink-strong);
   font-family: var(--signal-font-display);
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  line-height: 1;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
@@ -73,215 +74,161 @@
   margin: 0 0 0.55rem;
   color: var(--signal-cyan);
   font-family: var(--signal-font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.76rem;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
-.featuredGrid,
-.personalGrid,
-.professionalGrid {
-  display: grid;
-  gap: 1rem;
-}
-
 .featuredGrid {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
 }
 
 .personalGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid;
+  max-width: 34rem;
 }
 
-.professionalGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.deploymentGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
 }
 
-.featuredCard,
 .projectCard {
   display: flex;
-  min-height: 100%;
+  min-height: 20rem;
   flex-direction: column;
-  padding: 1.2rem;
+  padding: 1rem;
   color: var(--signal-ink);
-  background:
-    linear-gradient(135deg, rgba(193, 255, 79, 0.035), transparent 42%),
-    rgba(13, 19, 16, 0.86);
-  border: 1px solid rgba(237, 246, 222, 0.14);
+  background: rgba(13, 19, 16, 0.76);
+  border: 1px solid rgba(237, 246, 222, 0.13);
   border-radius: 8px;
   box-shadow: none;
 }
 
-.featuredCard {
-  min-height: 22rem;
-}
-
-.projectCard {
-  min-height: 22rem;
-}
-
-.cardPipeline {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  min-height: 6.8rem;
-  padding: 1px;
-  margin-bottom: 1.2rem;
-  overflow: hidden;
-  background: rgba(237, 246, 222, 0.1);
-  border: 1px solid rgba(237, 246, 222, 0.1);
-  border-radius: 8px;
-}
-
-.cardPipeline span {
-  display: grid;
-  align-content: space-between;
-  min-width: 0;
-  padding: 0.72rem;
+.deploymentCard {
+  display: flex;
+  min-height: 14.5rem;
+  flex-direction: column;
+  padding: 0.95rem;
   color: var(--signal-ink);
-  background:
-    linear-gradient(135deg, rgba(67, 239, 255, 0.04), transparent 52%),
-    rgba(6, 10, 8, 0.88);
-  font-family: var(--signal-font-mono);
-  font-size: 0.7rem;
-  line-height: 1.35;
-}
-
-.cardPipeline b {
-  color: var(--signal-cyan);
-  font-size: 0.68rem;
-  font-weight: 700;
-}
-
-.cardFretboard {
-  display: grid;
-  gap: 0.48rem;
-  min-height: 6.8rem;
-  padding: 1rem;
-  margin-bottom: 1.2rem;
-  background:
-    linear-gradient(90deg, rgba(67, 239, 255, 0.06), transparent),
-    rgba(6, 10, 8, 0.88);
-  border: 1px solid rgba(237, 246, 222, 0.12);
+  background: rgba(13, 19, 16, 0.72);
+  border: 1px solid rgba(237, 246, 222, 0.13);
   border-radius: 8px;
-}
-
-.cardFretboard div {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.55rem;
-  align-items: center;
-  min-height: 0.6rem;
-  background: linear-gradient(to bottom, transparent 45%, rgba(237, 246, 222, 0.18) 45% 55%, transparent 55%);
-}
-
-.cardFretboard span,
-.fretboardDiagram span {
-  display: block;
-  aspect-ratio: 1;
-  width: 0.78rem;
-  justify-self: center;
-  background: rgba(237, 246, 222, 0.12);
-  border: 1px solid rgba(237, 246, 222, 0.16);
-  border-radius: 50%;
-}
-
-.cardFretboard .activeNote,
-.fretboardDiagram .activeNote {
-  background: var(--signal-lime);
-  border-color: var(--signal-lime);
-  box-shadow: 0 0 18px rgba(193, 255, 79, 0.42);
 }
 
 .cardHeader {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.6rem;
   align-items: center;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1rem;
   color: var(--signal-cyan);
   font-family: var(--signal-font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.73rem;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
 .iconShell {
   display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.35rem;
+  height: 2.35rem;
   flex: 0 0 auto;
   place-items: center;
   color: var(--signal-lime);
-  background: rgba(193, 255, 79, 0.045);
+  background: rgba(193, 255, 79, 0.04);
   border: 1px solid rgba(193, 255, 79, 0.14);
   border-radius: 8px;
 }
 
-.featuredCard h3,
 .projectCard h3 {
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.7rem;
   color: var(--signal-ink-strong);
   font-family: var(--signal-font-display);
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   line-height: 1.08;
   letter-spacing: 0;
 }
 
-.featuredCard p,
-.projectCard p {
+.deploymentCard h3 {
+  margin: 0 0 0.65rem;
+  color: var(--signal-ink-strong);
+  font-family: var(--signal-font-display);
+  font-size: 1.18rem;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.projectSummary {
   margin: 0;
   color: var(--signal-muted);
-  line-height: 1.62;
+  font-size: 1rem;
+  line-height: 1.56;
 }
 
-.detailList {
-  display: grid;
-  gap: 0.55rem;
-  padding: 0;
-  margin: 1.25rem 0 0;
-  list-style: none;
-}
-
-.detailList li {
-  position: relative;
-  padding-left: 1rem;
+.deploymentCard p {
+  margin: 0;
   color: var(--signal-muted);
-  line-height: 1.45;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
-.detailList li::before {
-  position: absolute;
-  top: 0.67em;
-  left: 0;
-  width: 0.38rem;
-  height: 0.38rem;
-  background: var(--signal-lime);
-  border-radius: 50%;
-  box-shadow: 0 0 18px rgba(193, 255, 79, 0.36);
-  content: '';
+.projectProof {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.8rem 0;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(237, 246, 222, 0.11);
+  border-bottom: 1px solid rgba(237, 246, 222, 0.11);
+}
+
+.projectProof span {
+  color: var(--signal-soft);
+  font-family: var(--signal-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.projectProof strong {
+  color: var(--signal-ink);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.projectStatus {
+  margin: 0.75rem 0 0;
+  color: var(--signal-soft);
+  font-family: var(--signal-font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .cardActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.55rem;
   margin-top: auto;
-  padding-top: 1.35rem;
+  padding-top: 1.15rem;
 }
 
 .projectAction {
   display: inline-flex;
-  gap: 0.45rem;
+  gap: 0.42rem;
   align-items: center;
-  min-height: 2.55rem;
-  padding: 0.62rem 0.76rem;
+  min-height: 2.45rem;
+  padding: 0.58rem 0.72rem;
   color: var(--signal-bg);
   text-decoration: none;
   background: var(--signal-lime);
   border: 1px solid var(--signal-lime);
   border-radius: 8px;
   font-family: var(--signal-font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0;
   transition:
@@ -292,8 +239,8 @@
 
 .projectAction:nth-child(n + 2) {
   color: var(--signal-ink);
-  background: rgba(237, 246, 222, 0.04);
-  border-color: rgba(237, 246, 222, 0.16);
+  background: rgba(237, 246, 222, 0.035);
+  border-color: rgba(237, 246, 222, 0.15);
 }
 
 .projectAction:hover {
@@ -306,7 +253,7 @@
 
 .projectAction:nth-child(n + 2):hover {
   color: var(--signal-lime);
-  background: rgba(193, 255, 79, 0.065);
+  background: rgba(193, 255, 79, 0.06);
   border-color: rgba(193, 255, 79, 0.24);
 }
 
@@ -392,21 +339,22 @@
 
 .caseDiagramPanel,
 .caseMetaPanel,
+.caseGallery,
 .caseSections section {
-  background:
-    linear-gradient(135deg, rgba(193, 255, 79, 0.032), transparent 42%),
-    rgba(13, 19, 16, 0.86);
+  background: rgba(13, 19, 16, 0.82);
   border: 1px solid rgba(237, 246, 222, 0.14);
   border-radius: 8px;
 }
 
 .caseDiagramPanel,
-.caseMetaPanel {
+.caseMetaPanel,
+.caseGallery {
   padding: 1.2rem;
 }
 
 .caseDiagramPanel h2,
 .caseMetaPanel h2,
+.caseGallery h2,
 .caseSections h2 {
   margin: 0;
   color: var(--signal-ink-strong);
@@ -415,7 +363,8 @@
 }
 
 .caseDiagramPanel h2,
-.caseMetaPanel h2 {
+.caseMetaPanel h2,
+.caseGallery h2 {
   font-size: 1.55rem;
 }
 
@@ -461,9 +410,7 @@
   min-width: 0;
   padding: 1rem;
   color: var(--signal-ink);
-  background:
-    linear-gradient(135deg, rgba(67, 239, 255, 0.05), transparent 54%),
-    rgba(6, 10, 8, 0.9);
+  background: rgba(6, 10, 8, 0.9);
 }
 
 .pipelineStep span {
@@ -485,9 +432,7 @@
   min-height: 16rem;
   padding: 1.2rem;
   margin-top: 1.2rem;
-  background:
-    linear-gradient(90deg, rgba(67, 239, 255, 0.06), transparent),
-    rgba(6, 10, 8, 0.9);
+  background: rgba(6, 10, 8, 0.9);
   border: 1px solid rgba(237, 246, 222, 0.12);
   border-radius: 8px;
 }
@@ -498,6 +443,92 @@
   gap: 0.85rem;
   align-items: center;
   background: linear-gradient(to bottom, transparent 45%, rgba(237, 246, 222, 0.2) 45% 55%, transparent 55%);
+}
+
+.fretboardDiagram span {
+  display: block;
+  aspect-ratio: 1;
+  width: 0.78rem;
+  justify-self: center;
+  background: rgba(237, 246, 222, 0.12);
+  border: 1px solid rgba(237, 246, 222, 0.16);
+  border-radius: 50%;
+}
+
+.fretboardDiagram .activeNote {
+  background: var(--signal-lime);
+  border-color: var(--signal-lime);
+  box-shadow: 0 0 18px rgba(193, 255, 79, 0.42);
+}
+
+.caseGallery {
+  margin-top: 1rem;
+}
+
+.caseGalleryHeader {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.caseGalleryHeader a {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  width: fit-content;
+  color: var(--signal-cyan);
+  font-family: var(--signal-font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.caseGalleryHeader a:hover {
+  color: var(--signal-lime);
+  text-decoration: none;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.galleryItem {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 0.7rem;
+  margin: 0;
+  background: rgba(6, 10, 8, 0.74);
+  border: 1px solid rgba(237, 246, 222, 0.12);
+  border-radius: 8px;
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 18rem;
+  object-fit: contain;
+  background: rgba(3, 5, 4, 0.86);
+  border: 1px solid rgba(237, 246, 222, 0.1);
+  border-radius: 6px;
+}
+
+.galleryItem figcaption {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.galleryItem strong {
+  color: var(--signal-ink);
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.galleryItem span {
+  color: var(--signal-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .caseSections {
@@ -524,19 +555,20 @@
 @media screen and (max-width: 996px) {
   .featuredGrid,
   .personalGrid,
-  .professionalGrid,
+  .deploymentGrid,
   .caseOverview,
-  .pipelineDiagram {
+  .pipelineDiagram,
+  .galleryGrid {
     grid-template-columns: 1fr;
   }
 
-  .featuredCard,
-  .projectCard {
+  .projectCard,
+  .deploymentCard {
     min-height: auto;
   }
 
-  .cardPipeline {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .galleryItem img {
+    height: min(22rem, 62vw);
   }
 }
 
@@ -546,28 +578,24 @@
   }
 
   .section {
-    padding: 1.35rem 0 2.4rem;
+    padding: 1.35rem 0 2.1rem;
   }
 
-  .section + .section {
-    padding-top: 2.4rem;
-  }
-
-  .pageHeader h1,
-  .sectionHeader h2 {
+  .pageHeader h1 {
     font-size: clamp(2rem, 8vw, 2.45rem);
+  }
+
+  .projectAction {
+    width: 100%;
+    justify-content: center;
   }
 
   .caseStudyShell {
     padding-top: 2rem;
   }
 
-  .cardHeader {
-    margin-bottom: 1.4rem;
-  }
-
-  .cardPipeline {
-    grid-template-columns: 1fr;
+  .caseHero h1 {
+    font-size: 2.45rem;
   }
 
   .pipelineStep {
