@@ -49,6 +49,9 @@ const config = {
             'https://github.com/humandotlearning/humandotlearning.github.io/tree/main/',
         },
         blog: {
+          blogTitle: 'Notes',
+          blogDescription:
+            'Technical notes on AI systems, computer vision, tools, and experiments.',
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -93,7 +96,7 @@ const config = {
           //   position: 'left',
           //   label: 'Tutorial',
           // },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Notes', position: 'left'},
           {to: '/projects', label: 'Projects', position: 'left'},
           {
             href: 'https://github.com/humandotlearning',
@@ -117,7 +120,7 @@ const config = {
                 to: '/projects',
               },
               {
-                label: 'Blog',
+                label: 'Notes',
                 to: '/blog',
               },
             ],

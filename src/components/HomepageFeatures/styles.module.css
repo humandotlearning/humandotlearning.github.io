@@ -29,6 +29,10 @@
   margin: 0 auto;
 }
 
+.sectionShell + .sectionShell {
+  margin-top: 5rem;
+}
+
 .sectionIntro {
   max-width: 43rem;
   margin-bottom: 1.6rem;
@@ -60,6 +64,88 @@
   color: var(--signal-muted);
   font-size: 1.05rem;
   line-height: 1.65;
+}
+
+.selectedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.selectedCard {
+  display: flex;
+  min-height: 21rem;
+  flex-direction: column;
+  padding: 1.2rem;
+  color: var(--signal-ink);
+  text-decoration: none;
+  background:
+    linear-gradient(135deg, rgba(67, 239, 255, 0.04), transparent 42%),
+    rgba(13, 19, 16, 0.88);
+  border: 1px solid rgba(237, 246, 222, 0.14);
+  border-radius: 8px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.selectedCard:hover {
+  color: var(--signal-ink);
+  text-decoration: none;
+  background: rgba(237, 246, 222, 0.045);
+  border-color: rgba(193, 255, 79, 0.25);
+  transform: translateY(-3px);
+}
+
+.selectedMeta {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  color: var(--signal-cyan);
+  font-family: var(--signal-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.selectedCard h3 {
+  margin: 0 0 0.8rem;
+  color: var(--signal-ink-strong);
+  font-family: var(--signal-font-display);
+  font-size: 1.65rem;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.selectedCard p {
+  margin: 0;
+  color: var(--signal-muted);
+  line-height: 1.62;
+}
+
+.selectedProof {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  color: var(--signal-soft);
+  border-top: 1px solid rgba(237, 246, 222, 0.1);
+  font-family: var(--signal-font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.selectedAction {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  color: var(--signal-lime);
+  font-family: var(--signal-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .systemGrid {
@@ -262,11 +348,13 @@
 
 @media screen and (max-width: 996px) {
   .systemGrid,
+  .selectedGrid,
   .workGrid,
   .stackHeader {
     grid-template-columns: 1fr;
   }
 
+  .selectedCard,
   .systemCard {
     min-height: auto;
   }
@@ -302,6 +390,7 @@
   }
 
   .workLink,
+  .selectedCard,
   .stackGrid span {
     transition: none;
   }
