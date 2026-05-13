@@ -47,12 +47,12 @@ const proofPoints = [
     value: 'Exam proctoring analytics at national-exam scale',
   },
   {
-    label: 'Industrial safety CV',
-    value: 'Mining, energy, banking, and retail video analytics',
+    label: '7 mine deployment',
+    value: '12 analytics use cases and 1.4M+ AI safety events',
   },
   {
-    label: 'Edge inference',
-    value: 'TFLite, TensorRT, and OpenVINO optimization',
+    label: 'Production CV',
+    value: 'Industrial safety, ATM security, and HPCL wagon tracking',
   },
   {
     label: 'Multi-agent products',
@@ -214,10 +214,11 @@ function HomepageHeader() {
           <p
             className={clsx(styles.heroLead, styles.reveal)}
             style={{'--delay': '280ms'}}>
-            Built multi-agent LLM products, real-time CCTV analytics, edge CV
-            pipelines, and 10,000+ camera-scale monitoring workflows. Former
-            Head CV Engineer now building agentic AI products with LangGraph,
-            RAG, voice workflows, and multimodal pipelines.
+            Built large-scale mine video analytics, 10,000+ camera exam
+            proctoring workflows, real-time CCTV intelligence, and multi-agent
+            LLM products. Former Head CV Engineer now building agentic AI
+            products with LangGraph, RAG, voice workflows, and multimodal
+            pipelines.
           </p>
           <div
             className={clsx(styles.heroActions, styles.reveal)}

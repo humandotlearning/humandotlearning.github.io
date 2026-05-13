@@ -18,6 +18,15 @@ import styles from './styles.module.css';
 
 const selectedWork = [
   {
+    icon: Eye,
+    label: 'Production CV',
+    title: 'Production Video Analytics for Mines',
+    description:
+      'Large-scale mine safety analytics across 7 deployed sites, with safety events, compliance alerts, dashboards, and edge/cloud monitoring.',
+    proof: '12 analytics use cases across 7 mines; 1.4M+ AI events raised',
+    to: '/projects/industrial-cv',
+  },
+  {
     icon: BookOpen,
     label: 'LangGraph product',
     title: 'Latent Story',
@@ -35,18 +44,40 @@ const selectedWork = [
     proof: 'Voice workflow, LLM agents, structured writing outputs',
     to: '/projects/flowwriter',
   },
-  {
-    icon: Eye,
-    label: 'Production CV',
-    title: 'Industrial video analytics',
-    description:
-      'Led multi-site safety and operations analytics across mining, energy, banking, and retail environments.',
-    proof: 'Coal India workflows, HPCL wagon tracking, ATM analytics',
-    to: '/projects/industrial-cv',
-  },
+];
+
+const additionalDeployments = [
   {
     icon: Gauge,
-    label: 'Interactive tool',
+    label: 'Scale',
+    title: 'National Exam Proctoring Analytics',
+    description: '10,000+ camera-scale monitoring workflows for exam operations.',
+  },
+  {
+    icon: Activity,
+    label: 'Safety',
+    title: 'Industrial Safety Monitoring',
+    description:
+      'Safety analytics for field environments, including hazard and compliance monitoring.',
+  },
+  {
+    icon: Eye,
+    label: 'Security',
+    title: 'ATM Security Analytics',
+    description: 'Security-focused video analytics for banking environments.',
+  },
+  {
+    icon: Layers,
+    label: 'Operations',
+    title: 'HPCL Wagon Tracking',
+    description: 'Wagon tracking and counting workflows for industrial operations.',
+  },
+];
+
+const personalWork = [
+  {
+    icon: Gauge,
+    label: 'Fun personal project',
     title: 'Guitar Visualizer',
     description:
       'A fretboard learning tool for exploring scales, modes, chords, notes, and custom tunings.',
@@ -163,6 +194,23 @@ function SelectedWorkCard({item}) {
   );
 }
 
+function DeploymentCard({item}) {
+  const Icon = item.icon;
+
+  return (
+    <article className={styles.deploymentCard}>
+      <div className={styles.deploymentMeta}>
+        <div className={styles.workIcon}>
+          <Icon size={18} strokeWidth={1.8} />
+        </div>
+        <span>{item.label}</span>
+      </div>
+      <Heading as="h3">{item.title}</Heading>
+      <p>{item.description}</p>
+    </article>
+  );
+}
+
 function WorkLink({item}) {
   const Icon = item.icon;
   const content = (
@@ -217,6 +265,36 @@ export default function HomepageFeatures() {
 
         <div className={styles.selectedGrid}>
           {selectedWork.map((item) => (
+            <SelectedWorkCard key={item.title} item={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.sectionShell}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.kicker}>More production deployments</p>
+          <Heading as="h2">More production deployments.</Heading>
+          <p>
+            Additional shipped analytics work across exam operations, field
+            safety, banking security, and industrial tracking.
+          </p>
+        </div>
+
+        <div className={styles.deploymentGrid}>
+          {additionalDeployments.map((item) => (
+            <DeploymentCard key={item.title} item={item} />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.sectionShell}>
+        <div className={styles.sectionIntro}>
+          <p className={styles.kicker}>Personal project</p>
+          <Heading as="h2">Fun side build.</Heading>
+        </div>
+
+        <div className={styles.personalGrid}>
+          {personalWork.map((item) => (
             <SelectedWorkCard key={item.title} item={item} />
           ))}
         </div>
